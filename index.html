@@ -34,26 +34,33 @@ body{
 }
 .contenedor{max-width:1480px;margin:0 auto;padding:0 28px}
 
-/* ---------- Hero ---------- */
-.hero{
-  background:linear-gradient(118deg,var(--rojo) 0%,var(--teja) 100%);
-  color:#fff;padding:38px 0 34px;position:relative;overflow:hidden;
-}
-.hero::after{
-  content:"";position:absolute;inset:0;opacity:.14;
-  background-image:radial-gradient(circle at 1px 1px,#fff 1.4px,transparent 1.5px);
-  background-size:16px 16px;
-}
-.hero .contenedor{position:relative;z-index:1}
-.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.marca{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;opacity:.9}
-.hero h1{font-size:34px;line-height:1.15;font-weight:800;margin:10px 0 6px;letter-spacing:-.015em}
-.hero h1 em{font-style:normal;color:var(--rosa-claro)}
-.hero p{margin:0;max-width:62ch;opacity:.93;font-weight:500}
-.hero-meta{text-align:right;font-size:13px;font-weight:600;opacity:.93;line-height:1.7}
+/* ---------- Hero túnel ---------- */
+.hero{position:relative;height:70vh;min-height:520px;overflow:hidden;background:var(--fondo);color:var(--tinta);display:flex;align-items:center;justify-content:center;user-select:none;-webkit-user-select:none;border-bottom:1px solid var(--borde);touch-action:pan-x}
+.hero-grid{pointer-events:none;position:absolute;inset:0;background-image:radial-gradient(var(--borde) 1.2px,transparent 1.3px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 55%,transparent 100%)}
+.hero-glow{pointer-events:none;position:absolute;inset:0;background:radial-gradient(circle at center,rgba(224,37,63,.10) 0%,transparent 65%)}
+.hero-anillo{pointer-events:none;position:absolute;border-radius:50%}
+.hero-anillo.a1{width:48vmin;height:48vmin;border:1px solid rgba(224,37,63,.18)}
+.hero-anillo.a2{width:76vmin;height:76vmin;border:1px dashed var(--borde)}
+.hero-centro{pointer-events:none;position:relative;z-index:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px;width:100%;max-width:760px;will-change:transform,opacity}
+.hero-bloque{width:100%}
+.marca{font-size:12px;letter-spacing:.34em;text-transform:uppercase;font-weight:700;color:var(--rojo);margin-bottom:16px}
+.hero h1{font-size:clamp(34px,5vw,72px);line-height:.92;font-weight:800;margin:0;letter-spacing:-.04em;color:var(--tinta)}
+.hero h1 em{font-style:normal;color:var(--rojo)}
+.hero h2{font-size:clamp(17px,1.6vw,21px);font-weight:700;margin:22px 0 6px;letter-spacing:-.01em}
+.hero h2 em{font-style:normal;color:var(--rojo)}
+.hero p{margin:0 auto;max-width:52ch;color:var(--texto-suave);font-weight:500;font-size:15px;text-wrap:pretty}
+.hero-aviso{pointer-events:none;position:absolute;bottom:22px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--texto-suave)}
+.hero-aviso i{display:block;width:1px;height:24px;background:linear-gradient(var(--rojo),transparent)}
+.hero-plano{position:absolute;inset:0;pointer-events:none;transform-style:preserve-3d}
+.tcard{position:absolute;left:50%;top:50%;aspect-ratio:4/5;will-change:transform,opacity;opacity:0;pointer-events:auto;cursor:pointer}
+.tcard>div{position:relative;width:100%;height:100%;overflow:hidden;border-radius:16px;background:var(--fondo-alt);box-shadow:0 22px 50px rgba(15,23,41,.20);outline:1px solid rgba(15,23,41,.08);transition:outline-color .4s,box-shadow .4s}
+.tcard:hover>div{outline:3px solid var(--rojo);box-shadow:0 22px 50px rgba(224,37,63,.28)}
+.tcard img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease-out}
+.tcard:hover img{transform:scale(1.08)}
+.tcard.rota{display:none}
 
 /* ---------- KPIs ---------- */
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:-26px 0 22px;position:relative;z-index:2}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:28px 0 22px;position:relative;z-index:2}
 .kpi{background:#fff;border:1px solid var(--borde);border-radius:var(--radio);padding:16px 18px;box-shadow:var(--sombra)}
 .kpi .et{font-size:11px;text-transform:uppercase;letter-spacing:.11em;font-weight:700;color:var(--texto-suave)}
 .kpi .val{font-size:30px;font-weight:800;line-height:1.1;margin-top:7px;letter-spacing:-.02em}
@@ -147,26 +154,26 @@ input[type=search]{font:inherit;font-size:13px;font-weight:600;color:var(--texto
   .visor-caja{grid-template-columns:1fr;max-height:none}
   .visor-img{max-height:52vh}
   .visor-img img{max-height:52vh}
-  .hero h1{font-size:26px}
-  .hero-meta{text-align:left}
 }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="contenedor">
-    <div class="hero-top">
-      <div>
-        <div class="marca">Samplia Insights</div>
-        <h1>Álbum de <em>gatos</em> · PURINA ONE Terrine</h1>
-        <p>Fotos enviadas por los participantes al pedirles una imagen de su gato disfrutando del producto recibido con Samplia.</p>
-      </div>
-      <div class="hero-meta" id="heroMeta">
-        Samplia X Shop Experience<br>CC Carrefour Alcobendas<br>13 oct – 17 nov 2026
-      </div>
+<header class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-anillo a1"></div>
+  <div class="hero-anillo a2"></div>
+  <div class="hero-centro" id="heroCentro">
+    <div class="hero-bloque hero-bloque-uno" id="heroBloqueUno">
+      <div class="marca">Samplia Insights</div>
+      <h1>Gatos de verdad.<br><em>Disfrutando y</em> comiendo.</h1>
+      <h2>Álbum de <em>gatos</em> · PURINA ONE Terrine</h2>
+      <p>Fotos enviadas por los participantes al pedirles una imagen de su gato disfrutando del producto recibido con Samplia.</p>
     </div>
   </div>
+  <div class="hero-aviso" id="heroAviso"><span>Desliza para explorar</span><i></i></div>
+  <div class="hero-plano" id="heroPlano"></div>
 </header>
 
 <main class="contenedor">
@@ -184,7 +191,7 @@ input[type=search]{font:inherit;font-size:13px;font-weight:600;color:var(--texto
       <div class="kpi"><div class="et">Fotos recibidas</div><div class="val" id="kTotal">—</div><div class="sub" id="kUsuarios">—</div></div>
       <div class="kpi n1"><div class="et">Gatos reales</div><div class="val" id="kGatos">—</div><div class="sub" id="kGatosPct">—</div></div>
       <div class="kpi n2"><div class="et">Gatos comiendo</div><div class="val" id="kComiendo">—</div><div class="sub" id="kComiendoPct">—</div></div>
-      <div class="kpi n3"><div class="et">Comiendo el producto</div><div class="val" id="kProducto">—</div><div class="sub" id="kProductoPct">—</div></div>
+      <div class="kpi n3"><div class="et">Comiendo PURINA ONE TERRINE</div><div class="val" id="kProducto">—</div><div class="sub" id="kProductoPct">—</div></div>
     </div>
 
     <div class="fila-panel">
@@ -196,9 +203,11 @@ input[type=search]{font:inherit;font-size:13px;font-weight:600;color:var(--texto
       <div class="filtros-rapidos" id="filtrosRapidos">
         <button class="chip" data-niv="todas" aria-pressed="true">Todas<span class="cuenta"></span></button>
         <button class="chip ro" data-niv="2" aria-pressed="false">Comiendo<span class="cuenta"></span></button>
-        <button class="chip te" data-niv="3" aria-pressed="false">Comiendo producto<span class="cuenta"></span></button>
+        <button class="chip te" data-niv="3" aria-pressed="false">Comiendo One Terrine<span class="cuenta"></span></button>
         <button class="chip az" id="btnSoloPersonas" aria-pressed="false">Solo con personas</button>
+        <button class="chip az" id="btnSinPersonas" aria-pressed="false">Sin personas</button>
         <input type="search" id="buscar" placeholder="Buscar por uuid o descripción">
+        <button class="btn" id="btnLimpiar" style="width:100%">Limpiar filtros</button>
       </div>
     </div>
 
@@ -243,10 +252,63 @@ input[type=search]{font:inherit;font-size:13px;font-weight:600;color:var(--texto
 <script>
 (function(){
 "use strict";
+var FOTOS=["https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1792557337400.jpg?alt=media&token=12b4f285-91c0-427c-9c28-2f9643053afa","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1792530313373.jpg?alt=media&token=5dc88932-4d20-434e-b15f-730e4545494e","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1792697407031.jpg?alt=media&token=13996ff2-15ed-41d2-a346-b7c5025f81ee","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1792751296819.jpg?alt=media&token=033a5a99-df4d-4b2e-a1d4-f1529c9fb506","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1792766795718.jpg?alt=media&token=d2542f5d-9d64-42b2-9a6a-147b25d354ab","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1792831949898.jpg?alt=media&token=5ec3cbac-3abc-496d-9f80-c480707d5236","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793012275599.jpg?alt=media&token=0db60a5c-f298-47c6-a31e-36ac60ebf418","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793016158493.jpg?alt=media&token=18622cff-2960-48f0-96eb-3cbc64c72a21","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793044598183.jpg?alt=media&token=1e6a5329-c0b8-4eaf-8eaf-f7cf40e42d83","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793048594225.jpg?alt=media&token=e632b038-c7ce-41a4-8b79-b2d3e09c1aa7","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793054341956.jpg?alt=media&token=74400e3c-c5a5-4d17-aed2-4ad4c935b905","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793106059445.jpg?alt=media&token=95a68ec8-5dfd-444e-a555-1d0bfe207e0c","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793120439449.jpg?alt=media&token=78fe017f-d786-477f-a38a-32ec61e89d6a","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793127286327.jpg?alt=media&token=0f3a19d6-cfb3-4ae1-be91-2feaaf6c504b","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793229210268.jpg?alt=media&token=fb23e5c4-361b-467a-8bc0-39c95e9b0763","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793266334114.jpg?alt=media&token=ba50dca0-d127-4568-9f42-2139b248f3c9","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793294383735.jpg?alt=media&token=e562eb23-d49f-407d-9f58-a936385097c5","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793294312858.jpg?alt=media&token=e567cfd9-5e32-43a1-8ea0-d5c29aecf029","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793294677099.jpg?alt=media&token=910aaa61-e855-44e4-8fe5-ac278bd4dcab","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793318538047.jpg?alt=media&token=7fcc1f94-2352-4705-b1c2-b4eb08d19cbe","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793377246209.jpg?alt=media&token=b578bfc4-53e1-44a2-9493-290f23a1b7aa","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793384453131.jpg?alt=media&token=09ba0346-4d17-4de6-b9f6-3eef23eb8576","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793394500106.jpg?alt=media&token=e761532a-ce25-4dc0-8c33-895cbb64c78a","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793445158870.jpg?alt=media&token=e4f99636-75c0-48a9-aaf2-d3aad06c9fe1","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793457940217.jpg?alt=media&token=a7ca3381-7ccd-4a7b-a78c-5cecfb26304f","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793461273939.jpg?alt=media&token=10b2d445-f94a-4d01-82d9-cc29ef12d3b3","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793517359915.jpg?alt=media&token=d711d464-ef30-415f-b39d-e92f577c2fb8","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793520358274.jpg?alt=media&token=8a42a8cc-9396-47a6-9fc4-f40d668a522b","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793560069059.jpg?alt=media&token=da005d5c-2454-44dd-8c01-d3205b354729","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793633544367.jpg?alt=media&token=a98f6f0f-5c0f-442f-a5c9-5b2d4ba00494","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793807604974.jpg?alt=media&token=588942a7-9cb2-4164-b298-8e87261ff2ea","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793819114479.jpg?alt=media&token=677e8183-323a-4f8c-bea5-fdf1d5e7a8e7","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793823206492.jpg?alt=media&token=864d0382-9225-48b0-ab26-081d6d590e95","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793903055337.jpg?alt=media&token=58c47ca2-1abc-4026-ba1a-9f0a69d41887","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793954655314.jpg?alt=media&token=6594872f-e166-4eb3-b6d1-10523545363d","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793954796352.jpg?alt=media&token=d5729938-a020-4679-9568-0f61f83e8207","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793954853201.jpg?alt=media&token=faae7898-dc6e-4d7e-84ba-f7a4446f821a","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793991682158.jpg?alt=media&token=975eb237-a622-43a7-92b7-878d2250f1ff","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793991930602.jpg?alt=media&token=f133cebf-fdce-4cbd-9bd5-ed679b12d00b","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1793994439501.jpg?alt=media&token=488a0b29-ef40-400d-9737-426170924d69","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794048772290.jpg?alt=media&token=f63c09b1-0c38-459b-88b9-47c022d3000e","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794058446803.jpg?alt=media&token=865daa82-4135-417b-97ef-b42eeac32925","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794071763708.jpg?alt=media&token=026c32ab-e7b2-485a-af01-4785eae949b3","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794084324985.jpg?alt=media&token=d0a82335-7ac7-4cc1-a541-71cbbec84b40","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794135770703.jpg?alt=media&token=b8bb36bc-13f3-4cb6-a03a-51ab8b8594f7","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794214386194.jpg?alt=media&token=b0ef6baa-c148-4caf-81b6-9a7b58341a79","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794321198380.jpg?alt=media&token=4e0d346f-bbd1-4f91-8bbb-82f6fd8b74fc","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794342796142.jpg?alt=media&token=c9700035-763f-43e5-8c41-687bde9f8d7a","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794580924019.jpg?alt=media&token=375a20b9-1102-4936-b6d1-ee090af259dc","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794744383687.jpg?alt=media&token=747afc99-89d5-4cc7-bdcb-089424af8b35","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794848631122.jpg?alt=media&token=273a5750-a217-4ff2-9fb8-0e007d58761e","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794892848422.jpg?alt=media&token=fbbf0dca-5d5f-441d-8f84-5ada890b4d09","https://firebasestorage.googleapis.com/v0/b/samplia-app-prod.appspot.com/o/survey_photos%2FNddq94CrA9ntgt8jmOz8%2F1794171286859.jpg?alt=media&token=5907e48e-8daa-48b7-b3b1-ba8462b140f1"];
+var N=12,hero=document.getElementById("hero"),plano=document.getElementById("heroPlano"),centro=document.getElementById("heroCentro"),bloqueUno=document.getElementById("heroBloqueUno"),aviso=document.getElementById("heroAviso");
+var sel=FOTOS.slice();for(var i=sel.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=sel[i];sel[i]=sel[j];sel[j]=t;}sel=sel.slice(0,N);
+var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var cards=sel.map(function(src,i){
+  var g=i*137.5*Math.PI/180,el=document.createElement("div");
+  el.className="tcard";el.style.zIndex=i+1;
+  el.innerHTML='<div><img alt="Gato comiendo PURINA ONE" draggable="false"></div>';
+  var img=el.querySelector("img");img.src=src;img.onerror=function(){el.classList.add("rota");};
+  el.addEventListener("click",function(){window.open(src,"_blank","noopener");});
+  plano.appendChild(el);
+  return {el:el,i:i,cos:Math.cos(g),sin:Math.sin(g),rx:.28+(i%3)*.08,ry:.26+(i%2)*.09,rz:(i%2===0?1:-1)*(3+(i%5)*2)};
+});
+var W=0,H=0,mob=false;
+function medir(){var r=hero.getBoundingClientRect();W=r.width;H=r.height;mob=innerWidth<768;hero.style.perspective=mob?"900px":"1200px";
+  var cw=mob?Math.max(120,Math.min(170,W*.36)):Math.max(170,Math.min(250,W*.17));cards.forEach(function(c){c.el.style.width=cw+"px";});}
+medir();addEventListener("resize",medir);
+/* progreso + muelle */
+var raw=0,pos=0,vel=0,px=0,py=0,tx=0,ty=0,pvx=0,pvy=0;
+function lim(v){return Math.min(1,Math.max(0,v));}
+function capta(d){return (d>0&&raw<1)||(d<0&&raw>0&&scrollY<=1);}
+hero.addEventListener("wheel",function(e){if(!capta(e.deltaY))return;e.preventDefault();raw=lim(raw+e.deltaY*.0008);},{passive:false});
+var ty0=null;
+hero.addEventListener("touchstart",function(e){ty0=e.touches[0].clientY;},{passive:true});
+hero.addEventListener("touchmove",function(e){if(ty0==null)return;var y=e.touches[0].clientY,d=ty0-y;if(!capta(d))return;e.preventDefault();raw=lim(raw+d*.0025);ty0=y;},{passive:false});
+if(!reduce)addEventListener("pointermove",function(e){tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2;},{passive:true});
+function rango(v,a,b){return lim((v-a)/(b-a));}
+function op(l){if(l<.18)return l/.18;if(l<.82)return 1;if(l<.98)return 1-(l-.82)/.16;return 0;}
+var ultimo=performance.now();
+function frame(t){
+  var dt=Math.min(.05,(t-ultimo)/1000);ultimo=t;
+  var f=80*(raw-pos)-30*vel;vel+=f*dt;pos+=vel*dt;
+  var fx=120*(tx-px)-50*pvx;pvx+=fx*dt;px+=pvx*dt;var fy=120*(ty-py)-50*pvy;pvy+=fy*dt;py+=pvy*dt;
+  var s=pos,span=.55,far=mob?-1200:-1700,near=mob?350:500,pan=mob?20:45;
+  cards.forEach(function(c){
+    var a=(c.i/cards.length)*(1-span),l=rango(s,a,a+span),z=far+(near-far)*l;
+    var ox=c.cos*W*c.rx-px*pan,oy=c.sin*H*c.ry-py*pan;
+    c.el.style.transform="translate3d(calc(-50% + "+ox+"px),calc(-50% + "+oy+"px),"+z+"px) rotateZ("+c.rz+"deg)";
+    c.el.style.opacity=op(l);
+  });
+  var sc=s<.5?.7+.6*s:1+.7*(s-.5);
+  var oUno=rango(s,.32,.48);
+  bloqueUno.style.opacity=String(1-oUno);
+  centro.style.transform="scale("+sc+")";centro.style.opacity="1";
+  aviso.style.opacity=1-lim(s/.12);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function(){
+"use strict";
 
 /* ---------------- Estado ---------------- */
 var FILAS = [], VISTA = [], DIBUJADAS = 0, LOTE = 120;
-var NIVEL_SEL = "todas", INDICE_VISOR = -1, JERARQUIA = true, FILTRO_PERSONAS = false;
+var NIVEL_SEL = "todas", INDICE_VISOR = -1, JERARQUIA = true, FILTRO_PERSONAS = false, FILTRO_SIN_PERSONAS = false;
 var CLAVE_OVR = "album-gatos-purina-overrides";
 var OVR = {};
 try { OVR = JSON.parse(localStorage.getItem(CLAVE_OVR) || "{}"); } catch(e){ OVR = {}; }
@@ -361,7 +423,7 @@ function recalcular(){
   ];
   if (JERARQUIA){
     pasos.push({et:"El gato está comiendo", v:comiendo, col:"var(--rosa)", niv:"2"});
-    pasos.push({et:"Se ve el producto", v:producto, col:"var(--teja)", niv:"3"});
+    pasos.push({et:"Se ve One Terrine", v:producto, col:"var(--teja)", niv:"3"});
   }
   var html = pasos.map(function(p){
     var w = total ? (p.v/total*100) : 0;
@@ -405,6 +467,7 @@ function aplicar(){
     if (NIVEL_SEL === "nulo"){ if (n !== null) return false; }
     else if (NIVEL_SEL !== "todas"){ if (n === null || n < parseInt(NIVEL_SEL,10)) return false; }
     if (FILTRO_PERSONAS && f.persona !== "si") return false;
+    if (FILTRO_SIN_PERSONAS && f.persona !== "no") return false;
     if (q && (f.uuid + " " + f.desc + " " + f.motivo).toLowerCase().indexOf(q) === -1) return false;
     return true;
   });
@@ -531,9 +594,18 @@ document.getElementById("filtrosRapidos").addEventListener("click", function(e){
     aplicar();
     return;
   }
-  if (e.target.closest("#btnSoloPersonas")){
+  var btnSoloPersonas = e.target.closest("#btnSoloPersonas");
+  var btnSinPersonas = e.target.closest("#btnSinPersonas");
+  if (btnSoloPersonas){
     FILTRO_PERSONAS = !FILTRO_PERSONAS;
+    if (FILTRO_PERSONAS) FILTRO_SIN_PERSONAS = false;
+  } else if (btnSinPersonas){
+    FILTRO_SIN_PERSONAS = !FILTRO_SIN_PERSONAS;
+    if (FILTRO_SIN_PERSONAS) FILTRO_PERSONAS = false;
+  }
+  if (btnSoloPersonas || btnSinPersonas){
     document.getElementById("btnSoloPersonas").setAttribute("aria-pressed", String(FILTRO_PERSONAS));
+    document.getElementById("btnSinPersonas").setAttribute("aria-pressed", String(FILTRO_SIN_PERSONAS));
     aplicar();
   }
 });
@@ -553,6 +625,19 @@ document.getElementById("embudo").addEventListener("click", function(e){
     clearTimeout(el._t); el._t = setTimeout(aplicar, 220);
   });
 })();
+
+document.getElementById("btnLimpiar").addEventListener("click", function(){
+  NIVEL_SEL = "todas";
+  FILTRO_PERSONAS = false;
+  FILTRO_SIN_PERSONAS = false;
+  document.getElementById("buscar").value = "";
+  document.querySelectorAll("#filtrosRapidos .chip[data-niv]").forEach(function(c){
+    c.setAttribute("aria-pressed", String(c.dataset.niv === NIVEL_SEL));
+  });
+  document.getElementById("btnSoloPersonas").setAttribute("aria-pressed", "false");
+  document.getElementById("btnSinPersonas").setAttribute("aria-pressed", "false");
+  aplicar();
+});
 
 document.getElementById("rejilla").addEventListener("click", function(e){
   var d = e.target.closest(".foto"); if (!d) return;
