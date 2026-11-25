@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Álbum de gatos · PURINA ONE Hydralife</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#375395;
+  --tinta:#0F1729;
+  --rosa-claro:#FBDBDF;
+  --rosa:#E9455B;
+  --rojo:#E0253F;
+  --teja:#B51A03;
+
+  --fondo:#FFFFFF;
+  --fondo-alt:#FDF6F7;
+  --borde:#EADFE1;
+  --texto:#0F1729;
+  --texto-suave:#5B6478;
+  --radio:14px;
+  --sombra:0 2px 10px rgba(15,23,41,.07);
+  --sombra-alta:0 10px 34px rgba(15,23,41,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Raleway',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  color:var(--texto);background:var(--fondo);font-size:15px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.contenedor{max-width:1480px;margin:0 auto;padding:0 28px}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:linear-gradient(118deg,var(--rojo) 0%,var(--teja) 100%);
+  color:#fff;padding:38px 0 34px;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;opacity:.14;
+  background-image:radial-gradient(circle at 1px 1px,#fff 1.4px,transparent 1.5px);
+  background-size:16px 16px;
+}
+.hero .contenedor{position:relative;z-index:1}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.marca{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;opacity:.9}
+.hero h1{font-size:34px;line-height:1.15;font-weight:800;margin:10px 0 6px;letter-spacing:-.015em}
+.hero h1 em{font-style:normal;color:var(--rosa-claro)}
+.hero p{margin:0;max-width:62ch;opacity:.93;font-weight:500}
+.hero-meta{text-align:right;font-size:13px;font-weight:600;opacity:.93;line-height:1.7}
+
+/* ---------- KPIs ---------- */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:-26px 0 22px;position:relative;z-index:2}
+.kpi{background:#fff;border:1px solid var(--borde);border-radius:var(--radio);padding:16px 18px;box-shadow:var(--sombra)}
+.kpi .et{font-size:11px;text-transform:uppercase;letter-spacing:.11em;font-weight:700;color:var(--texto-suave)}
+.kpi .val{font-size:30px;font-weight:800;line-height:1.1;margin-top:7px;letter-spacing:-.02em}
+.kpi .sub{font-size:12.5px;color:var(--texto-suave);font-weight:600;margin-top:3px}
+.kpi.n1 .val{color:var(--azul)}
+.kpi.n2 .val{color:var(--rosa)}
+.kpi.n3 .val{color:var(--teja)}
+
+/* ---------- Embudo ---------- */
+.panel{background:#fff;border:1px solid var(--borde);border-radius:var(--radio);padding:20px 22px;box-shadow:var(--sombra);margin-bottom:22px}
+.panel h2{font-size:15px;font-weight:800;margin:0 0 4px;letter-spacing:-.01em}
+.panel .base{font-size:12px;color:var(--texto-suave);font-weight:600;margin:0 0 16px}
+.fila-panel{display:flex;gap:18px;align-items:stretch;margin-bottom:22px}
+.fila-panel .panel{flex:1;margin-bottom:0;min-width:0}
+.filtros-rapidos{display:grid;grid-template-columns:1fr;grid-auto-rows:min-content;gap:10px;align-content:start;min-width:220px}
+.filtros-rapidos .chip{width:100%;text-align:center}
+@media (max-width:760px){.fila-panel{flex-direction:column}}
+.barra{margin-bottom:13px;cursor:pointer}
+.barra:last-child{margin-bottom:0}
+.barra-cab{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:5px}
+.barra-cab span:last-child{color:var(--texto-suave);font-weight:600}
+.barra-pista{height:11px;background:var(--fondo-alt);border-radius:6px;overflow:hidden}
+.barra-rell{height:100%;border-radius:6px;transition:width .5s ease}
+
+/* ---------- Barra de herramientas ---------- */
+.chip{border:1px solid var(--borde);background:#fff;border-radius:999px;padding:7px 14px;font:inherit;
+  font-size:13px;font-weight:700;color:var(--texto);cursor:pointer;transition:.15s;white-space:nowrap}
+.chip:hover{border-color:var(--rosa)}
+.chip .cuenta{font-weight:600;opacity:.6;margin-left:5px}
+.chip[aria-pressed="true"]{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.chip[aria-pressed="true"] .cuenta{opacity:.85}
+.chip.az[aria-pressed="true"]{background:var(--azul);border-color:var(--azul)}
+.chip.ro[aria-pressed="true"]{background:var(--rosa);border-color:var(--rosa)}
+.chip.te[aria-pressed="true"]{background:var(--teja);border-color:var(--teja)}
+input[type=search]{font:inherit;font-size:13px;font-weight:600;color:var(--texto);
+  border:1px solid var(--borde);border-radius:9px;padding:7px 10px;background:#fff;width:100%}
+.btn{font:inherit;font-size:13px;font-weight:700;border:1px solid var(--borde);background:#fff;
+  color:var(--texto);border-radius:9px;padding:7px 13px;cursor:pointer;transition:.15s}
+.btn:hover{border-color:var(--rosa);color:var(--teja)}
+.btn.activo{background:var(--azul);border-color:var(--azul);color:#fff}
+
+/* ---------- Rejilla ---------- */
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:13px}
+.foto{position:relative;aspect-ratio:1;border-radius:11px;overflow:hidden;background:var(--fondo-alt);
+  border:1px solid var(--borde);cursor:pointer;transition:transform .18s,box-shadow .18s}
+.foto:hover{transform:translateY(-3px);box-shadow:var(--sombra-alta)}
+.foto img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .35s}
+.foto img.ok{opacity:1}
+.foto.rota{display:none}
+.insignia{position:absolute;left:7px;top:7px;z-index:2;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:3px 8px;border-radius:999px;color:#fff;background:var(--tinta)}
+.insignia.nx{background:#9AA3B2}
+.sel{outline:3px solid var(--rojo);outline-offset:-3px}
+.centinela{height:40px}
+.vacio{text-align:center;padding:60px 20px;color:var(--texto-suave);font-weight:600}
+
+/* ---------- Carga ---------- */
+.zona{border:2px dashed var(--borde);border-radius:var(--radio);padding:46px 24px;text-align:center;background:var(--fondo-alt)}
+.zona.sobre{border-color:var(--rojo);background:var(--rosa-claro)}
+.zona h3{margin:0 0 8px;font-size:18px;font-weight:800}
+.zona p{margin:0 auto 18px;max-width:58ch;color:var(--texto-suave);font-weight:600;font-size:14px}
+.zona .btn{background:var(--rojo);border-color:var(--rojo);color:#fff;padding:10px 20px;font-size:14px}
+.zona .btn:hover{background:var(--teja);border-color:var(--teja);color:#fff}
+
+/* ---------- Visor ---------- */
+.visor{position:fixed;inset:0;z-index:100;background:rgba(15,23,41,.93);display:none;
+  align-items:center;justify-content:center;padding:22px}
+.visor.abierto{display:flex}
+.visor-caja{max-width:1100px;width:100%;max-height:92vh;display:grid;grid-template-columns:minmax(0,1fr) 312px;
+  gap:0;background:#fff;border-radius:var(--radio);overflow:hidden}
+.visor-img{background:var(--tinta);display:grid;place-items:center;min-height:360px;max-height:92vh}
+.visor-img img{max-width:100%;max-height:92vh;object-fit:contain;display:block}
+.visor-info{padding:22px;overflow-y:auto;max-height:92vh}
+.visor-info h3{margin:0 0 3px;font-size:17px;font-weight:800}
+.visor-info .desc{color:var(--texto-suave);font-weight:600;font-size:14px;margin:0 0 16px}
+.dato{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--borde);font-size:13px}
+.dato b{font-weight:700}
+.dato span{color:var(--texto-suave);font-weight:600;text-align:right;word-break:break-all}
+.reclas{margin-top:18px}
+.reclas .et{font-size:11px;text-transform:uppercase;letter-spacing:.11em;font-weight:800;color:var(--texto-suave);margin-bottom:8px}
+.reclas .fila{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.reclas .btn{width:100%;text-align:left;font-size:12.5px}
+.cerrar{position:absolute;top:16px;right:20px;background:none;border:none;color:#fff;font-size:30px;
+  cursor:pointer;line-height:1;opacity:.8}
+.nav-v{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.14);border:none;
+  color:#fff;font-size:30px;width:48px;height:76px;cursor:pointer;border-radius:10px}
+.nav-v.ant{left:14px}
+.nav-v.sig{right:14px}
+.pie{padding:34px 0 50px;color:var(--texto-suave);font-size:12.5px;font-weight:600;text-align:center}
+@media(max-width:860px){
+  .visor-caja{grid-template-columns:1fr;max-height:none}
+  .visor-img{max-height:52vh}
+  .visor-img img{max-height:52vh}
+  .hero h1{font-size:26px}
+  .hero-meta{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="contenedor">
+    <div class="hero-top">
+      <div>
+        <div class="marca">Samplia Insights</div>
+        <h1>Álbum de <em>gatos</em> · PURINA ONE Terrine</h1>
+        <p>Fotos enviadas por los participantes al pedirles una imagen de su gato disfrutando del producto recibido con Samplia.</p>
+      </div>
+      <div class="hero-meta" id="heroMeta">
+        Samplia X Shop Experience<br>CC Carrefour Alcobendas<br>13 oct – 17 nov 2026
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <section id="zonaCarga" class="zona" style="margin-top:28px">
+    <h3>Carga el fichero de fotos</h3>
+    <p>Arrastra aquí <b>clasificacion.csv</b> (la salida de <code>clasificar_fotos_gatos.py</code>) para ver el álbum ya clasificado,
+       o <b>survey-photo-answers.csv</b> para revisar las fotos todavía sin clasificar.</p>
+    <button class="btn" id="btnElegir">Elegir fichero</button>
+    <input type="file" id="inputCsv" accept=".csv,text/csv" hidden>
+  </section>
+
+  <section id="app" hidden>
+    <div class="kpis">
+      <div class="kpi"><div class="et">Fotos recibidas</div><div class="val" id="kTotal">—</div><div class="sub" id="kUsuarios">—</div></div>
+      <div class="kpi n1"><div class="et">Gatos reales</div><div class="val" id="kGatos">—</div><div class="sub" id="kGatosPct">—</div></div>
+      <div class="kpi n2"><div class="et">Gatos comiendo</div><div class="val" id="kComiendo">—</div><div class="sub" id="kComiendoPct">—</div></div>
+      <div class="kpi n3"><div class="et">Comiendo el producto</div><div class="val" id="kProducto">—</div><div class="sub" id="kProductoPct">—</div></div>
+    </div>
+
+    <div class="fila-panel">
+      <div class="panel">
+        <h2 id="tituloPanel">Del total de envíos a la foto que vale</h2>
+        <p class="base" id="basePanel">Base: — fotos</p>
+        <div id="embudo"></div>
+      </div>
+      <div class="filtros-rapidos" id="filtrosRapidos">
+        <button class="chip" data-niv="todas" aria-pressed="true">Todas<span class="cuenta"></span></button>
+        <button class="chip ro" data-niv="2" aria-pressed="false">Comiendo<span class="cuenta"></span></button>
+        <button class="chip te" data-niv="3" aria-pressed="false">Comiendo producto<span class="cuenta"></span></button>
+        <button class="chip az" id="btnSoloPersonas" aria-pressed="false">Solo con personas</button>
+        <input type="search" id="buscar" placeholder="Buscar por uuid o descripción">
+      </div>
+    </div>
+
+    <p class="base" id="resultado" style="font-size:13px;font-weight:700;color:var(--texto-suave);margin:0 0 14px"></p>
+    <div class="rejilla" id="rejilla"></div>
+    <div class="centinela" id="centinela"></div>
+    <div class="vacio" id="vacio" hidden>No hay fotos que cumplan estos filtros.</div>
+  </section>
+
+  <p class="pie">Samplia Insights · Las fotos se cargan directamente desde el almacenamiento de la app, el fichero no las contiene.</p>
+</main>
+
+<div class="visor" id="visor" role="dialog" aria-modal="true">
+  <button class="cerrar" id="vCerrar" aria-label="Cerrar">&times;</button>
+  <button class="nav-v ant" id="vAnt" aria-label="Anterior">&#8249;</button>
+  <button class="nav-v sig" id="vSig" aria-label="Siguiente">&#8250;</button>
+  <div class="visor-caja">
+    <div class="visor-img"><img id="vImg" alt=""></div>
+    <div class="visor-info">
+      <h3 id="vTitulo">—</h3>
+      <p class="desc" id="vDesc"></p>
+      <div class="dato"><b>Posición</b><span id="vPos"></span></div>
+      <div class="dato"><b>uuid</b><span id="vUuid"></span></div>
+      <div class="dato"><b>Fecha</b><span id="vFecha"></span></div>
+      <div class="dato"><b>Gatos</b><span id="vGatos"></span></div>
+      <div class="dato"><b>Personas</b><span id="vPersona"></span></div>
+      <div class="dato"><b>Confianza</b><span id="vConf"></span></div>
+      <div class="dato"><b>Motivo descarte</b><span id="vMotivo"></span></div>
+      <div class="reclas">
+        <div class="et">Reclasificar (teclas 1–3)</div>
+        <div class="fila">
+          <button class="btn" data-niv="3">3 · Con producto</button>
+          <button class="btn" data-niv="2">2 · Comiendo</button>
+          <button class="btn" data-niv="1">1 · Gato</button>
+        </div>
+        <button class="btn" id="vOriginal" style="width:100%;margin-top:9px">Abrir original</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------- Estado ---------------- */
+var FILAS = [], VISTA = [], DIBUJADAS = 0, LOTE = 120;
+var NIVEL_SEL = "todas", INDICE_VISOR = -1, JERARQUIA = true, FILTRO_PERSONAS = false;
+var CLAVE_OVR = "album-gatos-purina-overrides";
+var OVR = {};
+try { OVR = JSON.parse(localStorage.getItem(CLAVE_OVR) || "{}"); } catch(e){ OVR = {}; }
+
+var NOMBRES = {1:"Gato",2:"Comiendo",3:"Con producto"};
+
+/* ---------------- CSV ---------------- */
+function parseCSV(texto){
+  if (texto.charCodeAt(0) === 0xFEFF) texto = texto.slice(1);
+  var filas = [], campo = "", fila = [], dentro = false, i = 0;
+  while (i < texto.length){
+    var c = texto[i];
+    if (dentro){
+      if (c === '"'){
+        if (texto[i+1] === '"'){ campo += '"'; i += 2; continue; }
+        dentro = false; i++; continue;
+      }
+      campo += c; i++; continue;
+    }
+    if (c === '"'){ dentro = true; i++; continue; }
+    if (c === ','){ fila.push(campo); campo = ""; i++; continue; }
+    if (c === '\n' || c === '\r'){
+      if (c === '\r' && texto[i+1] === '\n') i++;
+      fila.push(campo); filas.push(fila); fila = []; campo = ""; i++; continue;
+    }
+    campo += c; i++;
+  }
+  if (campo.length || fila.length){ fila.push(campo); filas.push(fila); }
+  if (!filas.length) return [];
+  var cab = filas[0].map(function(h){ return h.trim(); });
+  return filas.slice(1).filter(function(f){ return f.length && f.join("").trim() !== ""; })
+    .map(function(f){
+      var o = {};
+      for (var j = 0; j < cab.length; j++) o[cab[j]] = (f[j] || "").trim();
+      return o;
+    });
+}
+
+/* ---------------- Carga ---------------- */
+function cargar(texto){
+  var crudas = parseCSV(texto);
+  if (!crudas.length){ alert("El CSV no tiene filas legibles."); return; }
+  if (!crudas[0].hasOwnProperty("answer_url")){ alert("El CSV no tiene la columna answer_url."); return; }
+
+  FILAS = crudas.filter(function(f){ return f.answer_url; }).map(function(f, idx){
+    var nivel = f.nivel === "" || f.nivel == null || isNaN(parseInt(f.nivel,10)) ? null : parseInt(f.nivel,10);
+    return {
+      i: idx,
+      url: f.answer_url,
+      uuid: f.uuid || "",
+      fecha: f.created_at || "",
+      nivelBase: nivel,
+      nGatos: f.n_gatos || "",
+      persona: (f.hay_persona || "").toLowerCase(),
+      confianza: (f.confianza || "").toLowerCase(),
+      desc: f.descripcion || "",
+      motivo: f.motivo_descarte || "",
+      thumb: f.thumb || "",
+      error: f.error || "",
+      rota: false
+    };
+  });
+
+  // Quita duplicados exactos de URL por si se concatenan ejecuciones del script.
+  var vistas = {};
+  FILAS = FILAS.filter(function(f){
+    if (vistas[f.url]) return false;
+    vistas[f.url] = 1; return true;
+  });
+
+  document.getElementById("zonaCarga").hidden = true;
+  document.getElementById("app").hidden = false;
+  recalcular();
+  aplicar();
+  window.scrollTo({top:0});
+}
+
+function nivelDe(f){
+  if (OVR.hasOwnProperty(f.url)) return OVR[f.url];
+  return f.nivelBase;
+}
+
+/* ---------------- KPIs y embudo ---------------- */
+function recalcular(){
+  var total = FILAS.length;
+  var usuarios = {}, c = {0:0,1:0,2:0,3:0,nulo:0};
+  FILAS.forEach(function(f){
+    if (f.uuid) usuarios[f.uuid] = 1;
+    var n = nivelDe(f);
+    if (n === null) c.nulo++; else c[n]++;
+  });
+  var gatos = c[1] + c[2] + c[3], comiendo = c[2] + c[3], producto = c[3];
+  JERARQUIA = comiendo > 0;
+  document.querySelectorAll(".kpi.n2, .kpi.n3").forEach(function(k){ k.hidden = !JERARQUIA; });
+  if (NIVEL_SEL === "2" || NIVEL_SEL === "3"){ if (!JERARQUIA) NIVEL_SEL = "todas"; }
+  var pct = function(v){ return total ? (v/total*100).toFixed(1).replace(".", ",") + " % del total" : "—"; };
+  var num = function(v){ return v.toLocaleString("es-ES"); };
+
+  document.getElementById("kTotal").textContent = num(total);
+  document.getElementById("kUsuarios").textContent = Object.keys(usuarios).length.toLocaleString("es-ES") + " participantes";
+  document.getElementById("kGatos").textContent = c.nulo === total ? "—" : num(gatos);
+  document.getElementById("kGatosPct").textContent = c.nulo === total ? "sin clasificar" : pct(gatos);
+  document.getElementById("kComiendo").textContent = c.nulo === total ? "—" : num(comiendo);
+  document.getElementById("kComiendoPct").textContent = c.nulo === total ? "sin clasificar" : pct(comiendo);
+  document.getElementById("kProducto").textContent = c.nulo === total ? "—" : num(producto);
+  document.getElementById("kProductoPct").textContent = c.nulo === total ? "sin clasificar" : pct(producto);
+  document.getElementById("basePanel").textContent = "Base: " + num(total) + " fotos recibidas";
+
+  var pasos = [
+    {et:"Fotos recibidas", v:total, col:"var(--tinta)", niv:"todas"},
+    {et:"Con un gato real", v:gatos, col:"var(--azul)", niv:"1"}
+  ];
+  if (JERARQUIA){
+    pasos.push({et:"El gato está comiendo", v:comiendo, col:"var(--rosa)", niv:"2"});
+    pasos.push({et:"Se ve el producto", v:producto, col:"var(--teja)", niv:"3"});
+  }
+  var html = pasos.map(function(p){
+    var w = total ? (p.v/total*100) : 0;
+    return '<div class="barra" data-niv="'+p.niv+'">'
+      + '<div class="barra-cab"><span>'+p.et+'</span><span>'+num(p.v)+' · '+w.toFixed(1).replace(".",",")+' %</span></div>'
+      + '<div class="barra-pista"><div class="barra-rell" style="width:'+w+'%;background:'+p.col+'"></div></div></div>';
+  }).join("");
+  if (c.nulo) html += '<p class="base" style="margin:14px 0 0">'+num(c.nulo)+' fotos todavía sin clasificar.</p>';
+  document.getElementById("embudo").innerHTML = html;
+  document.getElementById("tituloPanel").textContent = JERARQUIA
+    ? "Del total de envíos a la foto que vale"
+    : "Cuántos envíos traen de verdad un gato";
+
+  pintarFiltrosRapidos(c, total, comiendo);
+}
+
+function pintarFiltrosRapidos(c, total, comiendo){
+  var grid = document.getElementById("filtrosRapidos");
+  var btnTodas = grid.querySelector('[data-niv="todas"]');
+  var btnComiendo = grid.querySelector('[data-niv="2"]');
+  var btnProducto = grid.querySelector('[data-niv="3"]');
+  btnTodas.querySelector(".cuenta").textContent = total.toLocaleString("es-ES");
+  btnComiendo.hidden = !JERARQUIA;
+  btnProducto.hidden = !JERARQUIA;
+  if (JERARQUIA){
+    btnComiendo.querySelector(".cuenta").textContent = comiendo.toLocaleString("es-ES");
+    btnProducto.querySelector(".cuenta").textContent = c[3].toLocaleString("es-ES");
+  }
+  grid.querySelectorAll('.chip[data-niv]').forEach(function(b){
+    b.setAttribute("aria-pressed", String(NIVEL_SEL === b.dataset.niv));
+  });
+}
+
+/* ---------------- Filtros ---------------- */
+function aplicar(){
+  var q = document.getElementById("buscar").value.trim().toLowerCase();
+
+  VISTA = FILAS.filter(function(f){
+    var n = nivelDe(f);
+    if (n === 0) return false;
+    if (NIVEL_SEL === "nulo"){ if (n !== null) return false; }
+    else if (NIVEL_SEL !== "todas"){ if (n === null || n < parseInt(NIVEL_SEL,10)) return false; }
+    if (FILTRO_PERSONAS && f.persona !== "si") return false;
+    if (q && (f.uuid + " " + f.desc + " " + f.motivo).toLowerCase().indexOf(q) === -1) return false;
+    return true;
+  });
+
+  VISTA.sort(function(a,b){ return a.fecha > b.fecha ? -1 : 1; });
+
+  document.getElementById("resultado").textContent =
+    VISTA.length.toLocaleString("es-ES") + " fotos en esta vista"
+    + (Object.keys(OVR).length ? " · " + Object.keys(OVR).length + " reclasificadas a mano" : "");
+  document.getElementById("vacio").hidden = VISTA.length > 0;
+  document.getElementById("rejilla").innerHTML = "";
+  DIBUJADAS = 0;
+  dibujarLote();
+}
+
+function dibujarLote(){
+  var rej = document.getElementById("rejilla");
+  var frag = document.createDocumentFragment();
+  var fin = Math.min(DIBUJADAS + LOTE, VISTA.length);
+  for (var k = DIBUJADAS; k < fin; k++){
+    var f = VISTA[k], n = nivelDe(f);
+    var div = document.createElement("div");
+    div.className = "foto";
+    div.dataset.k = k;
+    var etiqueta = "";
+    if (n === null){
+      etiqueta = '<span class="insignia nx">sin clasificar</span>';
+    }
+    div.innerHTML = etiqueta + '<img loading="lazy" decoding="async" alt="' +
+      (f.desc ? f.desc.replace(/"/g,"") : "Foto enviada por un participante") + '">';
+    var img = div.querySelector("img");
+    img.src = f.thumb || f.url;
+    img.addEventListener("load", function(){ this.classList.add("ok"); });
+    (function(fila, nodo){
+      nodo.querySelector("img").addEventListener("error", function(){ fila.rota = true; nodo.classList.add("rota"); });
+    })(f, div);
+    frag.appendChild(div);
+  }
+  rej.appendChild(frag);
+  DIBUJADAS = fin;
+}
+
+/* ---------------- Visor ---------------- */
+function abrir(k){
+  if (k < 0 || k >= VISTA.length) return;
+  INDICE_VISOR = k;
+  var f = VISTA[k], n = nivelDe(f);
+  document.getElementById("vImg").src = f.url;
+  document.getElementById("vTitulo").textContent = (n === null || !NOMBRES[n]) ? "Sin clasificar" : NOMBRES[n];
+  document.getElementById("vDesc").textContent = f.desc || "";
+  document.getElementById("vPos").textContent = (k+1).toLocaleString("es-ES") + " de " + VISTA.length.toLocaleString("es-ES");
+  document.getElementById("vUuid").textContent = f.uuid || "—";
+  document.getElementById("vFecha").textContent = f.fecha ? f.fecha.slice(0,10).split("-").reverse().join("/") + " · " + f.fecha.slice(11,16) : "—";
+  document.getElementById("vGatos").textContent = f.nGatos || "—";
+  document.getElementById("vPersona").textContent = f.persona === "si" ? "Sí" : (f.persona === "no" ? "No" : "—");
+  document.getElementById("vConf").textContent = f.confianza || "—";
+  document.getElementById("vMotivo").textContent = f.motivo || "—";
+  document.querySelectorAll('.reclas .btn[data-niv]').forEach(function(b){
+    b.classList.toggle("activo", String(n) === b.dataset.niv);
+    b.hidden = !JERARQUIA && (b.dataset.niv === "2" || b.dataset.niv === "3");
+  });
+  document.querySelector(".reclas .et").textContent =
+    JERARQUIA ? "Reclasificar (teclas 1–3)" : "Reclasificar (tecla 1)";
+  document.getElementById("visor").classList.add("abierto");
+  if (k > VISTA.length - 20 && DIBUJADAS < VISTA.length) dibujarLote();
+}
+
+function cerrar(){
+  document.getElementById("visor").classList.remove("abierto");
+  document.getElementById("vImg").src = "";
+  INDICE_VISOR = -1;
+}
+
+function mover(paso){
+  var k = INDICE_VISOR + paso;
+  while (k >= 0 && k < VISTA.length && VISTA[k].rota) k += paso;
+  if (k >= 0 && k < VISTA.length) abrir(k);
+}
+
+function reclasificar(nivel){
+  if (INDICE_VISOR < 0) return;
+  var f = VISTA[INDICE_VISOR];
+  if (f.nivelBase === nivel) delete OVR[f.url]; else OVR[f.url] = nivel;
+  try { localStorage.setItem(CLAVE_OVR, JSON.stringify(OVR)); } catch(e){}
+  recalcular();
+  var sig = INDICE_VISOR;
+  abrir(sig);
+  document.getElementById("resultado").textContent =
+    VISTA.length.toLocaleString("es-ES") + " fotos en esta vista · " +
+    Object.keys(OVR).length + " reclasificadas a mano";
+}
+
+/* ---------------- Eventos ---------------- */
+var zona = document.getElementById("zonaCarga"), input = document.getElementById("inputCsv");
+document.getElementById("btnElegir").addEventListener("click", function(){ input.click(); });
+input.addEventListener("change", function(){
+  var file = this.files && this.files[0];
+  if (!file) return;
+  var fr = new FileReader();
+  fr.onload = function(){ cargar(String(fr.result)); };
+  fr.readAsText(file, "utf-8");
+});
+["dragenter","dragover"].forEach(function(ev){
+  zona.addEventListener(ev, function(e){ e.preventDefault(); zona.classList.add("sobre"); });
+});
+["dragleave","drop"].forEach(function(ev){
+  zona.addEventListener(ev, function(e){ e.preventDefault(); zona.classList.remove("sobre"); });
+});
+zona.addEventListener("drop", function(e){
+  var file = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (!file) return;
+  var fr = new FileReader();
+  fr.onload = function(){ cargar(String(fr.result)); };
+  fr.readAsText(file, "utf-8");
+});
+
+document.getElementById("filtrosRapidos").addEventListener("click", function(e){
+  var b = e.target.closest(".chip[data-niv]");
+  if (b){
+    NIVEL_SEL = b.dataset.niv;
+    document.querySelectorAll("#filtrosRapidos .chip[data-niv]").forEach(function(c){
+      c.setAttribute("aria-pressed", String(c.dataset.niv === NIVEL_SEL));
+    });
+    aplicar();
+    return;
+  }
+  if (e.target.closest("#btnSoloPersonas")){
+    FILTRO_PERSONAS = !FILTRO_PERSONAS;
+    document.getElementById("btnSoloPersonas").setAttribute("aria-pressed", String(FILTRO_PERSONAS));
+    aplicar();
+  }
+});
+document.getElementById("embudo").addEventListener("click", function(e){
+  var b = e.target.closest(".barra"); if (!b) return;
+  NIVEL_SEL = b.dataset.niv;
+  document.querySelectorAll("#filtrosRapidos .chip[data-niv]").forEach(function(c){
+    c.setAttribute("aria-pressed", String(c.dataset.niv === NIVEL_SEL));
+  });
+  aplicar();
+  document.getElementById("rejilla").scrollIntoView({behavior:"smooth", block:"start"});
+});
+
+(function(){
+  var el = document.getElementById("buscar");
+  el.addEventListener("input", function(){
+    clearTimeout(el._t); el._t = setTimeout(aplicar, 220);
+  });
+})();
+
+document.getElementById("rejilla").addEventListener("click", function(e){
+  var d = e.target.closest(".foto"); if (!d) return;
+  abrir(parseInt(d.dataset.k, 10));
+});
+
+document.getElementById("vCerrar").addEventListener("click", cerrar);
+document.getElementById("vAnt").addEventListener("click", function(){ mover(-1); });
+document.getElementById("vSig").addEventListener("click", function(){ mover(1); });
+document.getElementById("visor").addEventListener("click", function(e){ if (e.target === this) cerrar(); });
+document.getElementById("vOriginal").addEventListener("click", function(){
+  if (INDICE_VISOR >= 0) window.open(VISTA[INDICE_VISOR].url, "_blank", "noopener");
+});
+document.querySelectorAll('.reclas .btn[data-niv]').forEach(function(b){
+  b.addEventListener("click", function(){ reclasificar(parseInt(b.dataset.niv, 10)); });
+});
+
+document.addEventListener("keydown", function(e){
+  if (!document.getElementById("visor").classList.contains("abierto")) return;
+  if (e.key === "Escape") cerrar();
+  else if (e.key === "ArrowLeft") mover(-1);
+  else if (e.key === "ArrowRight") mover(1);
+  else if (["1","2","3"].indexOf(e.key) !== -1) reclasificar(parseInt(e.key, 10));
+});
+
+new IntersectionObserver(function(entradas){
+  if (entradas[0].isIntersecting && DIBUJADAS < VISTA.length) dibujarLote();
+}, {rootMargin:"600px"}).observe(document.getElementById("centinela"));
+
+/* Carga automática si el CSV está junto al HTML y se sirve por HTTP */
+if (location.protocol !== "file:"){
+  fetch("clasificacion.csv").then(function(r){
+    if (r.ok) return r.text();
+    throw new Error("no");
+  }).then(cargar).catch(function(){});
+}
+})();
+</script>
+</body>
+</html>
